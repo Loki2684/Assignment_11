@@ -39,9 +39,9 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            junit '**/target/surefire-reports/*.xml' // Collect JUnit results
-        }
+post {
+    always {
+        junit '**/target/surefire-reports/*.xml'
     }
+}
 }
