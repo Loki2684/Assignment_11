@@ -1,13 +1,12 @@
-package com.example;
-
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
+
     @Test
-    public void testAdd() {
+    public void testAddition() {
         Calculator calc = new Calculator();
         int result = calc.add(2, 3);
-        Assert.assertEquals(5, result);
+        assertEquals(5, result);
     }
 }
