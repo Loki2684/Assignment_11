@@ -24,6 +24,14 @@ pipeline {
                 sh 'mvn package'
             }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarCloud') {
+                sh "${tool 'SQ_Scanner'}/bin/sonar-scanner"
+                }
+             }
+          }
     }
 
     post {
