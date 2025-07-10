@@ -1,23 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com.example</groupId>
   <artifactId>selenium-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <dependencies>
-    <!-- Selenium Dependency -->
+    <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.10.0</version>
+      <version>4.20.0</version>
     </dependency>
 
-    <!-- JUnit Dependency -->
+    <!-- JUnit 4 -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -28,7 +25,7 @@
 
   <build>
     <plugins>
-      <!-- Surefire Plugin to run JUnit tests and generate test reports -->
+      <!-- Surefire plugin to run JUnit tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -36,5 +33,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
