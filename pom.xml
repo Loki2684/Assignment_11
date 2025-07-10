@@ -2,26 +2,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Project coordinates -->
+  <!-- Basic project metadata -->
   <groupId>com.example</groupId>
   <artifactId>Assignment_11</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <name>Assignment_11</name>
+  <description>Java project integrated with Jenkins, JUnit, and SonarCloud</description>
   <packaging>jar</packaging>
 
-  <name>Assignment_11</name>
-  <description>A Java project integrated with Jenkins and SonarCloud</description>
-
-  <!-- Java version -->
+  <!-- Java settings -->
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <!-- Dependencies -->
   <dependencies>
-    <!-- JUnit for unit testing -->
+    <!-- ✅ JUnit 5 (Jupiter) -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
@@ -30,9 +31,10 @@
     </dependency>
   </dependencies>
 
+  <!-- Build plugins -->
   <build>
     <plugins>
-      <!-- Compiler plugin -->
+      <!-- ✅ Java compiler plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -43,12 +45,16 @@
         </configuration>
       </plugin>
 
-      <!-- Surefire plugin for running tests -->
+      <!-- ✅ Surefire plugin to run JUnit tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.2</version>
+        <version>3.1.2</version>
+        <configuration>
+          <useModulePath>false</useModulePath>
+        </configuration>
       </plugin>
     </plugins>
   </build>
+
 </project>
