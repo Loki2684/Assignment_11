@@ -1,34 +1,39 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven_3.9.6'    // Or your Maven tool name in Jenkins
+        jdk 'JDK17'            // Or your configured JDK
+    }
+
     environment {
-        SONARQUBE_SCANNER_HOME = tool 'SQ_Scanner'
+        SONAR_SCANNER_HOME = tool 'SQ_Scanner'   // Sonar scanner name in Jenkins
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Loki2684/Assignment_11.git', branch: 'master'
+                git 'https://github.com/Loki2684/Assignment_11.git'
             }
         }
 
         stage('Run Selenium Tests') {
             steps {
-                sh 'mvn test -Dtest=com.example.SeleniumTest'
+                sh 'mvn test'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('MySonarQubeServer') {
-                    sh "${env.SONARQUBE_SCANNER_HOME}/bin/sonar-scanner"
+                withSonarQubeEnv('SonarCloud') {
+                    sh "${env.SONAR_SCANNER_HOME}/bin/sonar-scanner"
                 }
             }
         }
 
         stage('Build Package') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn package'
             }
         }
     }
@@ -36,7 +41,6 @@ pipeline {
     post {
         always {
             junit '**/target/surefire-reports/*.xml'
-            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
     }
 }
