@@ -5,24 +5,22 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Basic project metadata -->
   <groupId>com.example</groupId>
   <artifactId>Assignment_11</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Assignment_11</name>
-  <description>Java project integrated with Jenkins, JUnit, and SonarCloud</description>
   <packaging>jar</packaging>
 
-  <!-- Java settings -->
+  <name>Assignment_11</name>
+  <description>Java project integrated with Jenkins, JUnit, and SonarCloud</description>
+
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <!-- Dependencies -->
   <dependencies>
-    <!-- ✅ JUnit 5 (Jupiter) -->
+    <!-- ✅ JUnit 5 (Jupiter API) -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
@@ -30,21 +28,18 @@
       <scope>test</scope>
     </dependency>
 
-         <dependency>
-  <groupId>junit</groupId>
-  <artifactId>junit</artifactId>
-  <version>4.13.2</version>
-  <scope>test</scope>
-</dependency>
-
+    <!-- ✅ JUnit 4 for legacy tests (if still needed) -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
-         
-
-  <!-- Build plugins -->
   <build>
     <plugins>
-      <!-- ✅ Java compiler plugin -->
+      <!-- ✅ Java compiler -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -55,7 +50,7 @@
         </configuration>
       </plugin>
 
-      <!-- ✅ Surefire plugin to run JUnit tests -->
+      <!-- ✅ Maven Surefire for running tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
