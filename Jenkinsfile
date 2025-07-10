@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_3.9.6'    // Or your Maven tool name in Jenkins
-        jdk 'JDK17'            // Or your configured JDK
+        maven 'maven'      // default Maven tool (configured in Jenkins)
+        jdk 'JDK'          // default JDK tool (configured in Jenkins)
     }
 
     environment {
-        SONAR_SCANNER_HOME = tool 'SQ_Scanner'   // Sonar scanner name in Jenkins
+        SONAR_SCANNER_HOME = tool 'SQ_Scanner'   // use your actual scanner name here
     }
 
     stages {
