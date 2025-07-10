@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourusername/simple-java-demo.git'
+                git credentialsId: 'github-pat', url: 'https://github.com/Loki2684/Assignment_11.git'
             }
         }
 
