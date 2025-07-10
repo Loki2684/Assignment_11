@@ -2,11 +2,16 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven'
-        jdk 'JDK'
+        maven 'maven'      // Maven tool configured in Jenkins
+        jdk 'JDK'          // JDK tool (name must match Jenkins config)
+    }
+
+    environment {
+        SONAR_SCANNER_HOME = tool 'SQ_Scanner'   // SonarScanner tool
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 git credentialsId: 'github-pat', url: 'https://github.com/Loki2684/Assignment_11.git'
@@ -19,24 +24,24 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarCloud') {
+                    sh "${env.SONAR_SCANNER_HOME}/bin/sonar-scanner"
+                }
+            }
+        }
+
+        stage('Build Package') {
             steps {
                 sh 'mvn package'
             }
         }
-
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarCloud') {
-                sh "${tool 'SQ_Scanner'}/bin/sonar-scanner"
-                }
-             }
-          }
     }
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            junit '**/target/surefire-reports/*.xml' // Collect JUnit results
         }
     }
 }
